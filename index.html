@@ -1,0 +1,49 @@
+<html ng-app="pizzaIceCream">
+  <head>
+    <title>Ralph's Pizza and/or Ice Cream Shed</title>
+    <script src="lib/angular.js">
+    </script>
+    <script src="app.js">
+    </script>
+    <script src="services/productsFactory.js">
+    </script>
+    <script src="controllers/PizzaController.js">
+    </script>
+    <script src="controllers/IceCreamController.js">
+    </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css" media="screen" title="no title" charset="utf-8">
+  </head>
+  <body>
+    <h2>
+      Ralph's Pizza and/or Ice Cream Shed!
+    </h2>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12" ng-controller="PizzaCtrl">
+          <h3>
+            Enter your number of pizza <strike>and or ice cream</strike> unit(s)
+          </h3>
+          <form ng-submit="productsFactory.totalPrice()" class="form-inline" role="form">
+            <input class="form-control" type="number" ng-model="productsFactory.productQuantity" placeholder="How many units would you like?" required>
+            <br>
+            <select ng-model="productsFactory.productItem" required>
+              <option value="">Pizza or Ice Cream?</option>
+              <option value="Pizza">Pizza</option>
+              <option value="Ice Cream">Ice Cream</option>
+            </select>
+
+            <button class="btn btn-warning btn-sm" type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+<div class="row">
+  <div class="col-xs-12" ng-controller="PizzaCtrl">
+    <p> Food Unit: {{ productsFactory.productQuantity }} </p>
+    <p> Unit type: {{ productsFactory.productItem }} </p>
+    <p> Cost: {{ productsFactory.totalPrice }}  </p>
+    </div>
+  </div>
+    </div>
+  </body>
+</html>
